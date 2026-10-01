@@ -1,0 +1,28 @@
+{
+  "name": "deoreonae",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "start": "node server/index.mjs",
+    "test": "node --test server/app.test.mjs"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.2.5",
+    "google-auth-library": "^11.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

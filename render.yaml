@@ -1,0 +1,25 @@
+# Paid web service and persistent disk. Review pricing before creating.
+services:
+  - type: web
+    name: ddak
+    runtime: docker
+    plan: starter
+    numInstances: 1
+    healthCheckPath: /
+    disk:
+      name: ddak-data
+      mountPath: /app/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
+      - key: DATABASE_PATH
+        value: /app/data/ddak.sqlite
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: APP_ORIGIN
+        sync: false

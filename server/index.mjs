@@ -1,0 +1,10 @@
+import { existsSync } from 'node:fs';
+import { loadEnvFile } from 'node:process';
+import { createApp } from './app.mjs';
+if(existsSync('.env'))loadEnvFile('.env');
+const port=Number(process.env.PORT||5173);
+const origin=process.env.APP_ORIGIN||`http://localhost:${port}`;
+if(process.env.NODE_ENV==='production'&&(!process.env.GOOGLE_CLIENT_ID||!origin.startsWith('https://')))throw Error('Production requires GOOGLE_CLIENT_ID and HTTPS APP_ORIGIN.');
+const server=createApp({clientId:process.env.GOOGLE_CLIENT_ID||'',origin,production:process.env.NODE_ENV==='production',dbPath:process.env.DATABASE_PATH||'data/deoreonae.sqlite'});
+server.listen(port,process.env.HOST||'127.0.0.1',()=>console.log(`DDAK: ${origin}\nGoogle 로그인: ${process.env.GOOGLE_CLIENT_ID?'설정됨':'클라이언트 ID 연결 필요'}`));
+for(const s of ['SIGINT','SIGTERM'])process.on(s,()=>server.close(()=>process.exit(0)));
