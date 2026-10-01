@@ -1,0 +1,29 @@
+DDAK Supabase 연결 버전
+
+1. SQL 실행
+https://supabase.com/dashboard/project/bmrjsamlmpcwzujjoczk/sql/new
+프로젝트의 supabase/migrations/001_ddak.sql 내용을 붙여넣고 Run.
+이미 성공한 SQL은 다시 실행하지 마세요.
+
+2. 로그인 후 돌아올 주소
+Supabase Authentication → URL Configuration
+Site URL:
+https://ahyeonk2.github.io/DDAK_/
+Redirect URLs에 아래 세 주소 추가:
+https://ahyeonk2.github.io/DDAK_/
+https://ahyeonk2.github.io/DDAK_/?recovery=1
+https://ahyeonk2.github.io/DDAK_/?invite=*
+
+3. 웹사이트 업데이트
+이 폴더의 index.html 하나를 GitHub DDAK_ 저장소 최상위에 업로드해 기존 index.html을 덮어쓰고 Commit changes.
+기존처럼 main 브랜치의 /(root)를 Pages 게시 위치로 사용할 때 적용됩니다.
+GitHub Actions 게시로 이미 바꿨다면 SUPABASE-SETUP.md의 Actions 배포를 이용하세요.
+
+4. 확인
+Pages 배포 완료 후 https://ahyeonk2.github.io/DDAK_/ 에서 회원가입.
+가입 확인 메일은 요청한 브라우저에서 열어주세요(PKCE).
+실제 이메일 발송에는 Supabase의 Custom SMTP 설정이 필요할 수 있습니다.
+Google 로그인은 Supabase에서 Google provider를 별도로 켜야 합니다.
+
+현재 확인: 공개 키 유효, 이메일 회원가입 활성화, Google 비활성화.
+현재 미완료: SQL 테이블 생성, 배포 주소 설정 확인, 실제 회원가입/메일/Google 테스트.
